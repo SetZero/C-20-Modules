@@ -134,3 +134,6 @@ fabric.properties
 *_REMOTE_*.txt
 
 # End of https://www.gitignore.io/api/git,c++,clion
+\.idea/
+
+bin/

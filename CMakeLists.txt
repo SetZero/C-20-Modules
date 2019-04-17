@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 #============================================================================================
 PROJECT(Bootloader)		  		# <-- Prjektname
 
-SET(FILES main.cpp loader.cpp loader-impl.cpp)		  	# <-- Quelldatei(en)
+SET(FILES main.cpp bootloader/loader.cpp bootloader/loader-impl.cpp uart/Uart.cpp uart/Uart-impl.cpp)		  	# <-- Quelldatei(en)
 
 SET(DEVICE atmega328p)			# <-- MCU
 SET(FREQ 12000000)			# <-- MCU-Frequenz
@@ -28,8 +28,8 @@ SET(FLASH YES)		        	# <-- soll Geflasht werden?
 SET(CMAKE_C_COMPILER ${AVRBIN}/avr-gcc)
 SET(CMAKE_CXX_COMPILER ${AVRBIN}/avr-g++)
 
-SET(CMAKE_C_FLAGS  "-Os -mmcu=${DEVICE} -DF_CPU=${FREQ}UL -std=gnu99 -Wl,--gc-sections")
-SET(CMAKE_CXX_FLAGS "-Os -mmcu=${DEVICE} -DF_CPU=${FREQ}UL -Wl,--gc-sections -fmodules-ts")
+SET(CMAKE_C_FLAGS  "-Os -mmcu=${DEVICE} -DBOOT_BAUD_RATE=9600 -DF_CPU=${FREQ}UL -std=gnu99 -Wl,--gc-sections")
+SET(CMAKE_CXX_FLAGS "-Os -mmcu=${DEVICE} -DBOOT_BAUD_RATE=9600 -DF_CPU=${FREQ}UL -Wl,--gc-sections -fmodules-ts -fconcepts")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(CMAKE_PREFIX_PATH /omgwtfbbq/linux/)

@@ -3,8 +3,8 @@ module;
 #include <avr/interrupt.h>
 #include <avr/boot.h>
 #include <util/delay.h>
-export module Loader; // interface of module A
-//
+export module Loader;
+import Uart;
 
 char interruptVar = 0;
 bool running = true;
